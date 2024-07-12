@@ -106,7 +106,7 @@ class TaxiDataVisualizer:
 
         cols = st.columns(3)
         with cols[0]:
-            ui.metric_card(title="Median Trip Duration", content=median, description=f"{(median / len(df)) * 100:.2f}% of all trips", key="card11")
+            ui.metric_card(title="Median Trip Duration", content=round(median,2), description=f"{(median / len(df)) * 100:.2f}% of all trips", key="card11")
         with cols[1]:
             ui.metric_card(title="Trips with Duration < Median", content=less_median, description=f"{(less_median / len(df)) * 100:.2f}% of all trips", key="card12")
         with cols[2]:
