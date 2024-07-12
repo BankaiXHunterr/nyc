@@ -7,7 +7,7 @@ import matplotlib.pyplot as plt
 import streamlit_shadcn_ui as ui
 from uniplots import TaxiDataVisualizer
 
-# st.set_option('deprecation.showPyplotGlobalUse', False)
+st.set_option('deprecation.showPyplotGlobalUse', False)
 
 
 # Load the filtered data
