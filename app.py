@@ -7,14 +7,14 @@ import matplotlib.pyplot as plt
 import streamlit_shadcn_ui as ui
 from uniplots import TaxiDataVisualizer
 
-# st.set_option('deprecation.showPyplotGlobalUse', False)
+st.set_option('deprecation.showPyplotGlobalUse', False)
 
 
 # Load the filtered data
 @st.cache_data
 def load_data():
     # Read the CSV file
-    data = pd.read_csv('filtered_data.csv')
+    data = pd.read_csv('data/filtered_data.csv')
     # Convert datetime columns to datetime objects
     data['tpep_pickup_datetime'] = pd.to_datetime(data['tpep_pickup_datetime'])
     data['tpep_dropoff_datetime'] = pd.to_datetime(data['tpep_dropoff_datetime'])
@@ -110,32 +110,6 @@ with cols[0]:
 with cols[1]:
     ui.metric_card(title="Number of trips Between 61 minutes & 10 minutes to Crate and Barrel", content=medium_trips, description=f"{(medium_trips/len(filtered_df))*100:.2f}% of all the Trips to Crate and Barrel Flagship Store", key="card4")
 
-# # Time of Day Distribution for filtered trips
-# st.write(f"Time of Day Distribution for Trips with Duration between {duration_range[0]} and {duration_range[1]} minutes")
-
-# fig, ax = plt.subplots(figsize=(12, 6))
-# sns.histplot(filtered_by_duration['tpep_dropoff_datetime'].dt.hour, bins=24, kde=False, ax=ax)
-# ax.set_title('Time of Day Distribution for Trips Ending at Crate and Barrel Flagship Store')
-# ax.set_xlabel('Hour of the Day')
-# ax.set_ylabel('Number of Trips')
-# st.pyplot(fig)
-
-# # Display filtered data
-# st.write(f"Filtered Data for Trips with Duration between {duration_range[0]} and {duration_range[1]} minutes")
-# st.dataframe(filtered_by_duration.head())
-
-
-
-# fig, ax = plt.subplots(figsize=(12, 6))
-# sns.histplot(filtered_by_duration[filtered_by_duration['trip_distance']<500]['trip_distance'], bins=50, kde=False, ax=ax)
-# ax.set_title('Trip Distance Distribution for Trips Ending at Crate and Barrel Flagship Store')
-# ax.set_xlabel('Trip Distance')
-# ax.set_ylabel('Number of Trips')
-# st.pyplot(fig)
-
-# # Display filtered data
-# st.write(f"Filtered Data for Trips with Duration between {duration_range[0]} and {duration_range[1]} minutes")
-# st.dataframe(filtered_by_duration.head())
 
 taxi = TaxiDataVisualizer(filtered_by_duration)
 taxi.plot_distribution()
