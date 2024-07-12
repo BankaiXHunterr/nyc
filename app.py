@@ -14,7 +14,7 @@ from uniplots import TaxiDataVisualizer
 @st.cache_data
 def load_data():
     # Read the CSV file
-    data = pd.read_csv('filtered_data.csv')
+    data = pd.read_csv('data/filtered_data.csv')
     # Convert datetime columns to datetime objects
     data['tpep_pickup_datetime'] = pd.to_datetime(data['tpep_pickup_datetime'])
     data['tpep_dropoff_datetime'] = pd.to_datetime(data['tpep_dropoff_datetime'])
