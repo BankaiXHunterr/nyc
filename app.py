@@ -64,7 +64,9 @@ medium_trips = filtered_df[(filtered_df['trip_duration'] <= 61) & (filtered_df['
 # Sidebar for trip duration filter
 st.header("Filter Trips by Duration")
 min_duration = int(filtered_df['trip_duration'].min())
-max_duration = int(filtered_df['trip_duration'].max())
+median = filtered_df['trip_duration'].median()
+stddev = filtered_df['trip_duration'].std()
+max_duration = int(median+10*stddev)
 # Set a default range for the slider
 default_min = min_duration
 default_max = max_duration
